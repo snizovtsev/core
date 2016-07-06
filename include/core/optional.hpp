@@ -375,8 +375,8 @@ struct optional final : private impl::storage<Type> {
     class T,
     class=enable_if_t<
       meta::all<
-        ::std::is_move_constructible<value_type>,
-        ::std::is_convertible<T, value_type>
+        ::std::is_move_constructible<value_type>::value,
+        ::std::is_convertible<T, value_type>::value
       >()
     >
   > value_type value_or (T&& val) && {
